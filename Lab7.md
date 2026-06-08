@@ -1,90 +1,268 @@
-# ASP.NET Lab 7 - Basic Web Controls Revision
+# Before Starting Lab 7
 
-## Objective
+## How to Create an ASP.NET Web Form (.aspx)
 
-Before solving the lab programs, revise the ASP.NET Web Forms controls required for this practical.
+### Step 1
+
+Open Visual Studio.
 
 ---
 
-# What is a Web Form?
+### Step 2
 
-A Web Form is a page that allows users to interact with a web application.
+Open your ASP.NET Web Forms Project.
+
+Example:
+
+```text
+ASP_NET_LABS
+```
+
+---
+
+### Step 3
+
+Right Click Project
+
+```text
+Project
+  ↓
+Add
+  ↓
+New Item
+```
+
+---
+
+### Step 4
+
+Select:
+
+```text
+Web Form
+```
+
+---
+
+### Step 5
+
+Provide a name.
 
 Examples:
 
-* Login Form
-* Registration Form
-* Calculator
-* Feedback Form
+```text
+Calculator.aspx
 
-A Web Form usually contains:
+Registration.aspx
 
-* Labels
-* TextBoxes
-* Buttons
-* Images
-* DropDownLists
-* CheckBoxLists
-* Calendars
+Country.aspx
 
----
-
-# ASP.NET Server Controls
-
-ASP.NET provides ready-made controls.
-
-These controls execute on the server and help create dynamic web applications.
-
-Syntax:
-
-```aspx
-<asp:ControlName runat="server" />
-```
-
-Example:
-
-```aspx
-<asp:TextBox runat="server"></asp:TextBox>
+DynamicPanel.aspx
 ```
 
 ---
 
-# 1. Label Control
+### Step 6
 
-A Label is used to display text.
+Click Add.
 
-Example:
-
-```aspx
-<asp:Label
-    ID="lblName"
-    runat="server"
-    Text="Enter Name">
-</asp:Label>
-```
-
-Output:
+Visual Studio automatically creates:
 
 ```text
-Enter Name
+Calculator.aspx
+```
+
+and
+
+```text
+Calculator.aspx.cs
 ```
 
 ---
 
-# 2. TextBox Control
+# Understanding ASPX and ASPX.CS
 
-Used to accept input from the user.
+## Calculator.aspx
+
+Used for:
+
+```text
+Design
+
+UI
+
+Controls
+```
+
+Examples:
+
+```aspx
+<asp:TextBox></asp:TextBox>
+
+<asp:Button></asp:Button>
+
+<asp:Label></asp:Label>
+```
+
+---
+
+## Calculator.aspx.cs
+
+Used for:
+
+```text
+Logic
+
+Calculations
+
+Events
+```
+
+Examples:
+
+```csharp
+Addition
+
+Subtraction
+
+Button Click Code
+```
+
+---
+
+# ASP.NET Page Structure
+
+```text
+Calculator.aspx
+        ↓
+UI Design
+
+Calculator.aspx.cs
+        ↓
+Logic
+```
+
+---
+
+# Why Do We Use runat="server" ?
 
 Example:
 
 ```aspx
 <asp:TextBox
-    ID="txtName"
-    runat="server">
+ID="txtNum1"
+runat="server">
 </asp:TextBox>
 ```
 
-User enters:
+Question:
+
+Why do we write:
+
+```aspx
+runat="server"
+```
+
+?
+
+Without it:
+
+```text
+ASP.NET Cannot Access
+The Control
+```
+
+With it:
+
+```text
+Control Becomes
+Available In C#
+```
+
+Example:
+
+```csharp
+txtNum1.Text
+```
+
+works only because:
+
+```aspx
+runat="server"
+```
+
+is present.
+
+---
+
+# Memory Trick
+
+```text
+runat="server"
+
+Means
+
+This Control
+Can Be Accessed
+From C#
+```
+
+---
+
+# Understanding ID Property
+
+Example:
+
+```aspx
+<asp:TextBox
+ID="txtName"
+runat="server">
+</asp:TextBox>
+```
+
+Purpose:
+
+```text
+Unique Name
+Of Control
+```
+
+Used inside C#:
+
+```csharp
+txtName.Text
+```
+
+---
+
+# What Does .Text Mean?
+
+Example:
+
+```csharp
+txtName.Text
+```
+
+Meaning:
+
+```text
+Value Stored
+Inside TextBox
+```
+
+If user enters:
+
+```text
+Rahul
+```
+
+then:
+
+```csharp
+txtName.Text
+```
+
+contains:
 
 ```text
 Rahul
@@ -92,467 +270,252 @@ Rahul
 
 ---
 
-## Accessing TextBox Value
-
-Code Behind:
-
-```csharp
-txtName.Text
-```
-
-Think:
-
-How will a calculator get numbers from the user?
-
-Answer:
-
-Using TextBoxes.
-
----
-
-# 3. Button Control
-
-Used to perform an action.
+# Understanding Events
 
 Example:
 
 ```aspx
 <asp:Button
-    ID="btnSubmit"
-    runat="server"
-    Text="Submit" />
+ID="btnAdd"
+runat="server"
+Text="Add"
+OnClick="btnAdd_Click" />
 ```
 
-Output:
+Question:
+
+What happens when button is clicked?
+
+Answer:
 
 ```text
-[ Submit ]
+btnAdd_Click()
+Method Executes
 ```
 
 ---
 
-# Button Click Event
+# Understanding Function Parameters
 
-When user clicks a button:
-
-```text
-Button Click
-      ↓
-Event Executes
-      ↓
-Code Runs
-```
-
-Syntax:
+Example:
 
 ```csharp
-protected void btnSubmit_Click(object sender, EventArgs e)
+protected void btnAdd_Click(
+object sender,
+EventArgs e)
 {
+
 }
 ```
 
+Students usually memorize this without understanding.
+
+Let's break it.
+
 ---
 
-# Complete Flow
+## protected
+
+Means:
 
 ```text
-User enters data
-       ↓
-Clicks Button
-       ↓
-Button Click Event
-       ↓
-Process Data
-       ↓
-Display Result
+Method Can Be Used
+Inside Current Class
 ```
 
 ---
 
-# 4. HyperLink Control
+## void
 
-Used to navigate to another page or website.
+Means:
+
+```text
+Returns Nothing
+```
+
+---
+
+## btnAdd_Click
+
+Method Name.
+
+Executed when:
+
+```text
+Add Button Clicked
+```
+
+---
+
+## object sender
+
+Represents:
+
+```text
+Which Control
+Triggered The Event
+```
 
 Example:
 
-```aspx
-<asp:HyperLink
-    ID="hlGoogle"
-    runat="server"
-    Text="Open Google">
-</asp:HyperLink>
+```text
+Button Clicked
 ```
+
+Then sender refers to:
+
+```text
+Button Object
+```
+
+---
+
+## EventArgs e
+
+Contains information about the event.
 
 Think:
 
-When user clicks a link, where should they go?
-
----
-
-# 5. Image Control
-
-Used to display images.
-
-Example:
-
-```aspx
-<asp:Image
-    ID="imgLogo"
-    runat="server" />
+```text
+Event Information
+Container
 ```
 
-Common Uses:
-
-* Company Logo
-* User Profile
-* Product Image
-
----
-
-# 6. LinkButton Control
-
-Looks like a hyperlink but behaves like a button.
-
-Example:
-
-```aspx
-<asp:LinkButton
-    ID="lnkSubmit"
-    runat="server"
-    Text="Click Here">
-</asp:LinkButton>
-```
-
-Difference:
-
-| HyperLink            | LinkButton        |
-| -------------------- | ----------------- |
-| Navigation           | Executes Event    |
-| No Server Processing | Server Processing |
-
----
-
-# 7. Calendar Control
-
-Used to select a date.
-
-Example:
-
-```aspx
-<asp:Calendar
-    ID="calDOB"
-    runat="server">
-</asp:Calendar>
-```
-
-Common Uses:
-
-* Date of Birth
-* Appointment Date
-* Event Date
-
----
-
-# 8. DropDownList Control
-
-Used to select one option from many.
-
-Example:
-
-```aspx
-<asp:DropDownList
-    ID="ddlCountry"
-    runat="server">
-</asp:DropDownList>
-```
-
-Output:
+For most beginner programs:
 
 ```text
-▼ India
+We Don't Use It
+Directly
 ```
 
-Examples:
-
-* Country
-* State
-* City
-* Department
+But ASP.NET provides it automatically.
 
 ---
 
-# Access Selected Value
+# Easy Memory Trick
 
 ```csharp
-ddlCountry.SelectedValue
+protected void btnAdd_Click(
+object sender,
+EventArgs e)
 ```
 
-or
+Read as:
 
-```csharp
-ddlCountry.SelectedItem.Text
+```text
+When Add Button Is Clicked
+
+Run This Method
 ```
+
+That's enough for Lab-7.
 
 ---
 
-# 9. Panel Control
+# Common Controls Used in Lab 7
 
-A Panel acts like a container.
+## Label
 
-It can hold:
-
-* Labels
-* TextBoxes
-* Buttons
-* Images
-
-Example:
+Display Text
 
 ```aspx
-<asp:Panel
-    ID="pnlUser"
-    runat="server">
-</asp:Panel>
-```
-
-Think of it as:
-
-```text
-A Box
-
-Inside:
-Label
-TextBox
-Button
+<asp:Label
+ID="lblResult"
+runat="server">
+</asp:Label>
 ```
 
 ---
 
-# Dynamic Controls
+## TextBox
 
-Normally controls are created during design time.
+Take Input
 
-Dynamic controls are created while the application is running.
-
-Example:
-
-User selects:
-
-```text
-5
-```
-
-from DropDownList.
-
-System creates:
-
-```text
-Label1 TextBox1
-
-Label2 TextBox2
-
-Label3 TextBox3
-
-Label4 TextBox4
-
-Label5 TextBox5
-```
-
-automatically.
-
----
-
-# Dynamic Control Flow
-
-```text
-Select Value
-      ↓
-Read Selected Value
-      ↓
-Loop
-      ↓
-Create Controls
-      ↓
-Add Controls To Panel
+```aspx
+<asp:TextBox
+ID="txtName"
+runat="server">
+</asp:TextBox>
 ```
 
 ---
 
-# 10. CheckBoxList Control
+## Button
 
-Used when multiple selections are allowed.
+Perform Action
 
-Example:
+```aspx
+<asp:Button
+ID="btnSubmit"
+runat="server"
+Text="Submit" />
+```
+
+---
+
+## CheckBoxList
+
+Multiple Selection
 
 ```aspx
 <asp:CheckBoxList
-    ID="cblCountry"
-    runat="server">
+ID="cblCountry"
+runat="server">
 </asp:CheckBoxList>
 ```
 
-Output:
+---
 
-```text
-☐ India
+## DropDownList
 
-☐ USA
+Single Selection
 
-☐ Canada
-```
-
-User can select:
-
-```text
-☑ India
-
-☑ Canada
+```aspx
+<asp:DropDownList
+ID="ddlCount"
+runat="server">
+</asp:DropDownList>
 ```
 
 ---
 
-# Adding Data into CheckBoxList
+## Panel
 
-Think:
+Container For Controls
 
-Country Name:
-
-```text
-India
+```aspx
+<asp:Panel
+ID="pnlDynamic"
+runat="server">
+</asp:Panel>
 ```
-
-Country Code:
-
-```text
-+91
-```
-
-After clicking Add:
-
-```text
-☐ India (+91)
-```
-
-gets added into CheckBoxList.
 
 ---
 
-# Reading Selected Items
-
-Think:
+# Complete Request Flow
 
 ```text
-☑ India
+User Enters Data
 
-☑ Canada
+↓
+
+TextBox
+
+↓
+
+Button Click
+
+↓
+
+btnSubmit_Click()
+
+↓
+
+Process Data
+
+↓
+
+Display Result
 ```
 
-When Display button is clicked:
-
-```text
-India
-
-Canada
-```
-
-should be shown.
-
----
-
-# Mapping Concepts to Lab Questions
-
-| Question          | Concept                                            |
-| ----------------- | -------------------------------------------------- |
-| Calculator        | TextBox, Button, Event Handling                    |
-| Registration Form | Label, TextBox, Button, HyperLink, Image, Calendar |
-| Dynamic Panel     | Panel, DropDownList, Dynamic Controls              |
-| Country Form      | TextBox, Button, CheckBoxList                      |
-
----
-
-# Lab Questions
-
-## Q1 Calculator
-
-Operations:
-
-* Addition
-* Subtraction
-* Multiplication
-* Division
-* Modulo
-
-Think:
-
-* How many TextBoxes are required?
-* How will user choose operation?
-* Where will result be displayed?
-
----
-
-## Q2 Registration Form
-
-Use:
-
-* Label
-* TextBox
-* Button
-* HyperLink
-* Image
-* LinkButton
-* Calendar
-
-Think:
-
-What fields are required in a registration form?
-
----
-
-## Q3 Dynamic Panel
-
-Think:
-
-User selects:
-
-```text
-3
-```
-
-How can 3 Labels and 3 TextBoxes be generated automatically?
-
----
-
-## Q4 Country Name and Country Code
-
-Think:
-
-Step 1:
-
-User enters:
-
-```text
-India
-+91
-```
-
-Step 2:
-
-Click Add
-
-Step 3:
-
-Store inside CheckBoxList
-
-Step 4:
-
-User selects items
-
-Step 5:
-
-Click Display
-
-Step 6:
-
-Show selected countries
-
----
+Remember this flow and ASP.NET Web Forms become much easier to understand.
