@@ -93,19 +93,7 @@ else
 | ==       | Equal To              |
 | !=       | Not Equal To          |
 
-## Activity
 
-Three students have heights:
-
-* 170
-* 165
-* 180
-
-How would you identify the tallest student?
-
-The computer follows the same comparison process.
-
----
 
 # 3. Loops
 
@@ -211,17 +199,6 @@ Indexes:
 0 1 2 3 4
 ```
 
-## Activity
-
-Find the largest value manually:
-
-```text
-12 45 8 90 34
-```
-
-What process did your brain follow?
-
-A computer follows the same process.
 
 ---
 
