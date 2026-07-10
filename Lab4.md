@@ -667,84 +667,8 @@ ProABCgramming
 
 ---
 
-# Split()
 
-Splits string into multiple parts.
 
-```csharp
-string str="C#,Java,Python";
-
-string[] languages=str.Split(',');
-
-foreach(string s in languages)
-{
-    Console.WriteLine(s);
-}
-```
-
-Output
-
-```
-C#
-Java
-Python
-```
-
----
-
-# Join()
-
-Joins array elements into one string.
-
-```csharp
-string[] arr={"A","B","C"};
-
-Console.WriteLine(String.Join("-",arr));
-```
-
-Output
-
-```
-A-B-C
-```
-
----
-
-# IsNullOrEmpty()
-
-Checks whether string is null or empty.
-
-```csharp
-string s="";
-
-Console.WriteLine(String.IsNullOrEmpty(s));
-```
-
-Output
-
-```
-True
-```
-
----
-
-# IsNullOrWhiteSpace()
-
-Checks whether string contains only spaces.
-
-```csharp
-string s="     ";
-
-Console.WriteLine(String.IsNullOrWhiteSpace(s));
-```
-
-Output
-
-```
-True
-```
-
----
 
 # Escape Characters
 
@@ -825,9 +749,6 @@ CompareTo() -> Negative
 - ToLower()
 - StartsWith()
 - EndsWith()
-- Split()
-- Join()
 - Insert()
 - Remove()
-- IsNullOrEmpty()
-- IsNullOrWhiteSpace()
+
